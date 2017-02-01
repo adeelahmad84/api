@@ -9,23 +9,27 @@ Github:         https://github.com/adeelahmad84
 Description:    API script.
 """
 
+from __future__ import print_function
+import doctest
+#import json
+#import unittest
 import requests
-import json
-import unittest
+import fresh
 
 def main():
-    def _url(path):
-            return 'https://todo.example.com' + path
+    """
+    This module will liaise the Fresh Service Desk API.
+    """
 
-    response = requests.get('https://todolist.example.com/tasks/')
+
+    response = fresh.get_tickets
     if response.status_code != 200:
     # This means something went wrong.
-        raise ApiError('GET /tasks/ {}'.format(response.status_code))
+        raise requests.HTTPError('GET /tasks/ {}'.format(response.status_code))
 
     print(response.status_code)
-    data = response.json()
+    #data = response.json()
 
 if __name__ == '__main__':
-        import doctest
-        doctest.testmod()
-        main()
+    doctest.testmod()
+    main()
