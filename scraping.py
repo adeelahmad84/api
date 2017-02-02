@@ -10,20 +10,22 @@ Description:    Web Scraping script.
 """
 
 import urllib2
+import doctest
 from bs4 import BeautifulSoup
-import unittest
 
 def main():
-    events = "http://kb.eventtracker.com/evtpass/results.asp"
+    """
+    Retrieve all teh URLs needed.
+    """
+    events = "https://urls.tandem.ninja"
     page = urllib2.urlopen(events)
     soup = BeautifulSoup(page, "html.parser")
 
-    all_links=soup.find_all("a")
+    all_links = soup.find_all("a")
     print all_links
     for links in all_links:
         print links.get("href")
 
 if __name__ == '__main__':
-        import doctest
-        doctest.testmod()
-        main()
+    doctest.testmod()
+    main()
