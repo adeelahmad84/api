@@ -10,9 +10,8 @@ Description:    API script.
 """
 
 from __future__ import print_function
-import doctest
 #import json
-#import unittest
+import unittest
 import requests
 import fresh
 
@@ -31,5 +30,9 @@ def main():
     #data = response.json()
 
 if __name__ == '__main__':
-    doctest.testmod()
     main()
+    import doctest
+    doctest.testmod()
+    class MyTest(unittest.TestCase):
+        def test(self):
+            self.assertEqual(main(), )
